@@ -26,8 +26,8 @@ public class CrudActivity extends AppCompatActivity {
         txtSobrenome=(EditText)findViewById(R.id.txtSobrenome);
         txtEmail=(EditText)findViewById(R.id.txtEmail);
 
-        db=openOrCreateDatabase("StudentDB", Context.MODE_PRIVATE, null);
-        db.execSQL("CREATE TABLE IF NOT EXISTS Cadastro(ID INT, Nome VARCHAR, Sobrenome VARCHAR, Email VARCHAR);");
+        db=openOrCreateDatabase("CrudDB", Context.MODE_PRIVATE, null);
+        db.execSQL("CREATE TABLE IF NOT EXISTS Cadastro(_id INTEGER PRIMARY KEY AUTOINCREMENT, Nome VARCHAR, Sobrenome VARCHAR, Email VARCHAR);");
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -41,7 +41,8 @@ public class CrudActivity extends AppCompatActivity {
                     Snackbar.make(view, "Preencha todos os campos.", Snackbar.LENGTH_LONG).setAction("Action", null).show();
                     return;
                 }
-                db.execSQL("INSERT INTO Cadastro VALUES(1, '" + txtNome.getText() + "','" + txtSobrenome.getText() + "','" + txtEmail.getText() + "');");
+
+                db.execSQL("INSERT INTO Cadastro (Nome, Sobrenome, Email) VALUES('" + txtNome.getText() + "','" + txtSobrenome.getText() + "','" + txtEmail.getText() + "');");
                 Snackbar.make(view, "Registro salvo com sucesso.", Snackbar.LENGTH_LONG).setAction("Action", null).show();
                 clearText();
             }
@@ -52,6 +53,6 @@ public class CrudActivity extends AppCompatActivity {
     {
         txtNome.setText("");
         txtSobrenome.setText("");
-        txtEmail.requestFocus();
+        txtEmail.setText("");
     }
 }

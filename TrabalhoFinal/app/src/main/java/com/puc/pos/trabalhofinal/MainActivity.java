@@ -28,11 +28,10 @@ public class MainActivity extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // Chama a activity de crud
-                Intent i = new Intent(MainActivity.this, MainActivity.class);
+
+                Intent i = new Intent(MainActivity.this, CrudActivity.class);
                 startActivity(i);
 
-                // close this activity
                 finish();
             }
         });
@@ -86,9 +85,13 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_camera) {
-            // Handle the camera action
+            Intent i = new Intent(MainActivity.this, ListaActivity.class);
+            startActivity(i);
+            finish();
         } else if (id == R.id.nav_gallery) {
-
+            Intent i = new Intent(MainActivity.this, CrudActivity.class);
+            startActivity(i);
+            finish();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
